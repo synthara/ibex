@@ -61,7 +61,7 @@ _start:
 zero_loop:
   sw x0, 0(x26)
   addi x26, x26, 4
-  ble x26, x27, zero_loop
+  blt x26, x27, zero_loop
 zero_loop_end:
 
 
