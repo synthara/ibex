@@ -11,19 +11,14 @@ module prim_clock_gating (
   output clk_o
 );
 
-     
-`ifdef SYNTHESIS
-  SC7P5T_CKGPRELATNX1_CSC20L i_SC7P5T_CKGPRELATNX1_CSC20L (.CLK(clk_i), .E(en_i), .TE(test_en_i), .Z(clk_o));
-`else   
   reg en_latch;
 
-  always @* begin
-    if (!clk_i) begin
-      en_latch = en_i | test_en_i;
-    end
+  always_latch begin
+      if (!clk_i) begin
+          en_latch = en_i | test_en_i;
+      end
   end
 
   assign clk_o = en_latch & clk_i;
-`endif 
 
 endmodule
