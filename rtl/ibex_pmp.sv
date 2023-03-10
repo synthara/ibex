@@ -12,19 +12,19 @@ module ibex_pmp #(
   parameter int unsigned PMPNumRegions  = 4
 ) (
   // Clock and Reset
-  input  logic                    clk_i,
-  input  logic                    rst_ni,
+  input var logic                    clk_i,
+  input var logic                    rst_ni,
 
   // Interface to CSRs
-  input  ibex_pkg::pmp_cfg_t      csr_pmp_cfg_i     [PMPNumRegions],
-  input  logic [33:0]             csr_pmp_addr_i    [PMPNumRegions],
-  input  ibex_pkg::pmp_mseccfg_t  csr_pmp_mseccfg_i,
+  input var ibex_pkg::pmp_cfg_t      csr_pmp_cfg_i     [PMPNumRegions],
+  input var logic [33:0]             csr_pmp_addr_i    [PMPNumRegions],
+  input var ibex_pkg::pmp_mseccfg_t  csr_pmp_mseccfg_i,
 
-  input  ibex_pkg::priv_lvl_e     priv_mode_i    [PMPNumChan],
+  input var ibex_pkg::priv_lvl_e     priv_mode_i    [PMPNumChan],
   // Access checking channels
-  input  logic [33:0]             pmp_req_addr_i [PMPNumChan],
-  input  ibex_pkg::pmp_req_e      pmp_req_type_i [PMPNumChan],
-  output logic                    pmp_req_err_o  [PMPNumChan]
+  input var logic [33:0]             pmp_req_addr_i [PMPNumChan],
+  input var ibex_pkg::pmp_req_e      pmp_req_type_i [PMPNumChan],
+  output var logic                    pmp_req_err_o  [PMPNumChan]
 
 );
 

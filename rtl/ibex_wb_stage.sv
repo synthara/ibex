@@ -18,42 +18,42 @@ module ibex_wb_stage #(
   parameter bit ResetAll       = 1'b0,
   parameter bit WritebackStage = 1'b0
 ) (
-  input  logic                     clk_i,
-  input  logic                     rst_ni,
+  input var logic                     clk_i,
+  input var logic                     rst_ni,
 
-  input  logic                     en_wb_i,
-  input  ibex_pkg::wb_instr_type_e instr_type_wb_i,
-  input  logic [31:0]              pc_id_i,
-  input  logic                     instr_is_compressed_id_i,
-  input  logic                     instr_perf_count_id_i,
+  input var logic                     en_wb_i,
+  input var ibex_pkg::wb_instr_type_e instr_type_wb_i,
+  input var logic [31:0]              pc_id_i,
+  input var logic                     instr_is_compressed_id_i,
+  input var logic                     instr_perf_count_id_i,
 
-  output logic                     ready_wb_o,
-  output logic                     rf_write_wb_o,
-  output logic                     outstanding_load_wb_o,
-  output logic                     outstanding_store_wb_o,
-  output logic [31:0]              pc_wb_o,
-  output logic                     perf_instr_ret_wb_o,
-  output logic                     perf_instr_ret_compressed_wb_o,
-  output logic                     perf_instr_ret_wb_spec_o,
-  output logic                     perf_instr_ret_compressed_wb_spec_o,
+  output var logic                     ready_wb_o,
+  output var logic                     rf_write_wb_o,
+  output var logic                     outstanding_load_wb_o,
+  output var logic                     outstanding_store_wb_o,
+  output var logic [31:0]              pc_wb_o,
+  output var logic                     perf_instr_ret_wb_o,
+  output var logic                     perf_instr_ret_compressed_wb_o,
+  output var logic                     perf_instr_ret_wb_spec_o,
+  output var logic                     perf_instr_ret_compressed_wb_spec_o,
 
-  input  logic [4:0]               rf_waddr_id_i,
-  input  logic [31:0]              rf_wdata_id_i,
-  input  logic                     rf_we_id_i,
+  input var logic [4:0]               rf_waddr_id_i,
+  input var logic [31:0]              rf_wdata_id_i,
+  input var logic                     rf_we_id_i,
 
-  input  logic [31:0]              rf_wdata_lsu_i,
-  input  logic                     rf_we_lsu_i,
+  input var logic [31:0]              rf_wdata_lsu_i,
+  input var logic                     rf_we_lsu_i,
 
-  output logic [31:0]              rf_wdata_fwd_wb_o,
+  output var logic [31:0]              rf_wdata_fwd_wb_o,
 
-  output logic [4:0]               rf_waddr_wb_o,
-  output logic [31:0]              rf_wdata_wb_o,
-  output logic                     rf_we_wb_o,
+  output var logic [4:0]               rf_waddr_wb_o,
+  output var logic [31:0]              rf_wdata_wb_o,
+  output var logic                     rf_we_wb_o,
 
-  input logic                      lsu_resp_valid_i,
-  input logic                      lsu_resp_err_i,
+  input var logic                      lsu_resp_valid_i,
+  input var logic                      lsu_resp_err_i,
 
-  output logic                     instr_done_wb_o
+  output var logic                     instr_done_wb_o
 );
 
   import ibex_pkg::*;

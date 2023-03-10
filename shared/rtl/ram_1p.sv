@@ -12,14 +12,14 @@ module ram_1p #(
     parameter int Depth       = 128,
     parameter     MemInitFile = ""
 ) (
-    input               clk_i,
-    input               rst_ni,
+    input var              clk_i,
+    input var              rst_ni,
 
-    input               req_i,
-    input               we_i,
-    input        [ 3:0] be_i,
-    input        [31:0] addr_i,
-    input        [31:0] wdata_i,
+    input var              req_i,
+    input var              we_i,
+    input var       [ 3:0] be_i,
+    input var       [31:0] addr_i,
+    input var       [31:0] wdata_i,
     output logic        rvalid_o,
     output logic [31:0] rdata_o
 );

@@ -13,44 +13,44 @@ module ibex_ex_block #(
   parameter ibex_pkg::rv32b_e RV32B           = ibex_pkg::RV32BNone,
   parameter bit               BranchTargetALU = 0
 ) (
-  input  logic                  clk_i,
-  input  logic                  rst_ni,
+  input var logic                  clk_i,
+  input var logic                  rst_ni,
 
   // ALU
-  input  ibex_pkg::alu_op_e     alu_operator_i,
-  input  logic [31:0]           alu_operand_a_i,
-  input  logic [31:0]           alu_operand_b_i,
-  input  logic                  alu_instr_first_cycle_i,
+  input var ibex_pkg::alu_op_e     alu_operator_i,
+  input var logic [31:0]           alu_operand_a_i,
+  input var logic [31:0]           alu_operand_b_i,
+  input var logic                  alu_instr_first_cycle_i,
 
   // Branch Target ALU
   // All of these signals are unusued when BranchTargetALU == 0
-  input  logic [31:0]           bt_a_operand_i,
-  input  logic [31:0]           bt_b_operand_i,
+  input var logic [31:0]           bt_a_operand_i,
+  input var logic [31:0]           bt_b_operand_i,
 
   // Multiplier/Divider
-  input  ibex_pkg::md_op_e      multdiv_operator_i,
-  input  logic                  mult_en_i,             // dynamic enable signal, for FSM control
-  input  logic                  div_en_i,              // dynamic enable signal, for FSM control
-  input  logic                  mult_sel_i,            // static decoder output, for data muxes
-  input  logic                  div_sel_i,             // static decoder output, for data muxes
-  input  logic  [1:0]           multdiv_signed_mode_i,
-  input  logic [31:0]           multdiv_operand_a_i,
-  input  logic [31:0]           multdiv_operand_b_i,
-  input  logic                  multdiv_ready_id_i,
-  input  logic                  data_ind_timing_i,
+  input var ibex_pkg::md_op_e      multdiv_operator_i,
+  input var logic                  mult_en_i,             // dynamic enable signal, for FSM control
+  input var logic                  div_en_i,              // dynamic enable signal, for FSM control
+  input var logic                  mult_sel_i,            // static decoder output, for data muxes
+  input var logic                  div_sel_i,             // static decoder output, for data muxes
+  input var logic  [1:0]           multdiv_signed_mode_i,
+  input var logic [31:0]           multdiv_operand_a_i,
+  input var logic [31:0]           multdiv_operand_b_i,
+  input var logic                  multdiv_ready_id_i,
+  input var logic                  data_ind_timing_i,
 
   // intermediate val reg
-  output logic [1:0]            imd_val_we_o,
-  output logic [33:0]           imd_val_d_o[2],
-  input  logic [33:0]           imd_val_q_i[2],
+  output var logic [1:0]            imd_val_we_o,
+  output var logic [33:0]           imd_val_d_o[2],
+  input var logic [33:0]           imd_val_q_i[2],
 
   // Outputs
-  output logic [31:0]           alu_adder_result_ex_o, // to LSU
-  output logic [31:0]           result_ex_o,
-  output logic [31:0]           branch_target_o,       // to IF
-  output logic                  branch_decision_o,     // to ID
+  output var logic [31:0]           alu_adder_result_ex_o, // to LSU
+  output var logic [31:0]           result_ex_o,
+  output var logic [31:0]           branch_target_o,       // to IF
+  output var logic                  branch_decision_o,     // to ID
 
-  output logic                  ex_valid_o             // EX has valid output
+  output var logic                  ex_valid_o             // EX has valid output
 );
 
   import ibex_pkg::*;

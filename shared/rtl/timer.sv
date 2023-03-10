@@ -12,15 +12,15 @@ module timer #(
   // Bus address width
   parameter int unsigned AddressWidth = 32
 ) (
-  input  logic                    clk_i,
-  input  logic                    rst_ni,
+  input var logic                    clk_i,
+  input var logic                    rst_ni,
   // Bus interface
-  input  logic                    timer_req_i,
+  input var logic                    timer_req_i,
 
-  input  logic [AddressWidth-1:0] timer_addr_i,
-  input  logic                    timer_we_i,
-  input  logic [ DataWidth/8-1:0] timer_be_i,
-  input  logic [   DataWidth-1:0] timer_wdata_i,
+  input var logic [AddressWidth-1:0] timer_addr_i,
+  input var logic                    timer_we_i,
+  input var logic [ DataWidth/8-1:0] timer_be_i,
+  input var logic [   DataWidth-1:0] timer_wdata_i,
   output logic                    timer_rvalid_o,
   output logic [   DataWidth-1:0] timer_rdata_o,
   output logic                    timer_err_o,

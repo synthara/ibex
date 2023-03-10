@@ -29,96 +29,96 @@ module ibex_cs_registers #(
   parameter ibex_pkg::rv32b_e RV32B             = ibex_pkg::RV32BNone
 ) (
   // Clock and Reset
-  input  logic                 clk_i,
-  input  logic                 rst_ni,
+  input var logic                 clk_i,
+  input var logic                 rst_ni,
 
   // Hart ID
-  input  logic [31:0]          hart_id_i,
+  input var logic [31:0]          hart_id_i,
 
   // Privilege mode
   output ibex_pkg::priv_lvl_e  priv_mode_id_o,
   output ibex_pkg::priv_lvl_e  priv_mode_if_o,
   output ibex_pkg::priv_lvl_e  priv_mode_lsu_o,
-  output logic                 csr_mstatus_tw_o,
+  output var logic                 csr_mstatus_tw_o,
 
   // mtvec
-  output logic [31:0]          csr_mtvec_o,
-  input  logic                 csr_mtvec_init_i,
-  input  logic [31:0]          boot_addr_i,
+  output var logic [31:0]          csr_mtvec_o,
+  input var logic                 csr_mtvec_init_i,
+  input var logic [31:0]          boot_addr_i,
 
   // Interface to registers (SRAM like)
-  input  logic                 csr_access_i,
-  input  ibex_pkg::csr_num_e   csr_addr_i,
-  input  logic [31:0]          csr_wdata_i,
-  input  ibex_pkg::csr_op_e    csr_op_i,
-  input                        csr_op_en_i,
-  output logic [31:0]          csr_rdata_o,
+  input var logic                 csr_access_i,
+  input var ibex_pkg::csr_num_e   csr_addr_i,
+  input var logic [31:0]          csr_wdata_i,
+  input var ibex_pkg::csr_op_e    csr_op_i,
+  input var                       csr_op_en_i,
+  output var logic [31:0]          csr_rdata_o,
 
   // interrupts
-  input  logic                 irq_software_i,
-  input  logic                 irq_timer_i,
-  input  logic                 irq_external_i,
-  input  logic [14:0]          irq_fast_i,
-  input  logic                 nmi_mode_i,
-  output logic                 irq_pending_o,          // interrupt request pending
+  input var logic                 irq_software_i,
+  input var logic                 irq_timer_i,
+  input var logic                 irq_external_i,
+  input var logic [14:0]          irq_fast_i,
+  input var logic                 nmi_mode_i,
+  output var logic                 irq_pending_o,          // interrupt request pending
   output ibex_pkg::irqs_t      irqs_o,                 // interrupt requests qualified with mie
-  output logic                 csr_mstatus_mie_o,
-  output logic [31:0]          csr_mepc_o,
+  output var logic                 csr_mstatus_mie_o,
+  output var logic [31:0]          csr_mepc_o,
 
   // PMP
   output ibex_pkg::pmp_cfg_t     csr_pmp_cfg_o  [PMPNumRegions],
-  output logic [33:0]            csr_pmp_addr_o [PMPNumRegions],
+  output var logic [33:0]            csr_pmp_addr_o [PMPNumRegions],
   output ibex_pkg::pmp_mseccfg_t csr_pmp_mseccfg_o,
 
   // debug
-  input  logic                 debug_mode_i,
-  input  ibex_pkg::dbg_cause_e debug_cause_i,
-  input  logic                 debug_csr_save_i,
-  output logic [31:0]          csr_depc_o,
-  output logic                 debug_single_step_o,
-  output logic                 debug_ebreakm_o,
-  output logic                 debug_ebreaku_o,
-  output logic                 trigger_match_o,
+  input var logic                 debug_mode_i,
+  input var ibex_pkg::dbg_cause_e debug_cause_i,
+  input var logic                 debug_csr_save_i,
+  output var logic [31:0]          csr_depc_o,
+  output var logic                 debug_single_step_o,
+  output var logic                 debug_ebreakm_o,
+  output var logic                 debug_ebreaku_o,
+  output var logic                 trigger_match_o,
 
-  input  logic [31:0]          pc_if_i,
-  input  logic [31:0]          pc_id_i,
-  input  logic [31:0]          pc_wb_i,
+  input var logic [31:0]          pc_if_i,
+  input var logic [31:0]          pc_id_i,
+  input var logic [31:0]          pc_wb_i,
 
   // CPU control bits
-  output logic                 data_ind_timing_o,
-  output logic                 dummy_instr_en_o,
-  output logic [2:0]           dummy_instr_mask_o,
-  output logic                 dummy_instr_seed_en_o,
-  output logic [31:0]          dummy_instr_seed_o,
-  output logic                 icache_enable_o,
-  output logic                 csr_shadow_err_o,
+  output var logic                 data_ind_timing_o,
+  output var logic                 dummy_instr_en_o,
+  output var logic [2:0]           dummy_instr_mask_o,
+  output var logic                 dummy_instr_seed_en_o,
+  output var logic [31:0]          dummy_instr_seed_o,
+  output var logic                 icache_enable_o,
+  output var logic                 csr_shadow_err_o,
 
   // Exception save/restore
-  input  logic                 csr_save_if_i,
-  input  logic                 csr_save_id_i,
-  input  logic                 csr_save_wb_i,
-  input  logic                 csr_restore_mret_i,
-  input  logic                 csr_restore_dret_i,
-  input  logic                 csr_save_cause_i,
-  input  ibex_pkg::exc_cause_e csr_mcause_i,
-  input  logic [31:0]          csr_mtval_i,
-  output logic                 illegal_csr_insn_o,     // access to non-existent CSR,
+  input var logic                 csr_save_if_i,
+  input var logic                 csr_save_id_i,
+  input var logic                 csr_save_wb_i,
+  input var logic                 csr_restore_mret_i,
+  input var logic                 csr_restore_dret_i,
+  input var logic                 csr_save_cause_i,
+  input var ibex_pkg::exc_cause_e csr_mcause_i,
+  input var logic [31:0]          csr_mtval_i,
+  output var logic                 illegal_csr_insn_o,     // access to non-existent CSR,
                                                         // with wrong priviledge level, or
                                                         // missing write permissions
   // Performance Counters
-  input  logic                 instr_ret_i,                 // instr retired in ID/EX stage
-  input  logic                 instr_ret_compressed_i,      // compressed instr retired
-  input  logic                 instr_ret_spec_i,            // speculative instr_ret_i
-  input  logic                 instr_ret_compressed_spec_i, // speculative instr_ret_compressed_i
-  input  logic                 iside_wait_i,                // core waiting for the iside
-  input  logic                 jump_i,                      // jump instr seen (j, jr, jal, jalr)
-  input  logic                 branch_i,                    // branch instr seen (bf, bnf)
-  input  logic                 branch_taken_i,              // branch was taken
-  input  logic                 mem_load_i,                  // load from memory in this cycle
-  input  logic                 mem_store_i,                 // store to memory in this cycle
-  input  logic                 dside_wait_i,                // core waiting for the dside
-  input  logic                 mul_wait_i,                  // core waiting for multiply
-  input  logic                 div_wait_i                   // core waiting for divide
+  input var logic                 instr_ret_i,                 // instr retired in ID/EX stage
+  input var logic                 instr_ret_compressed_i,      // compressed instr retired
+  input var logic                 instr_ret_spec_i,            // speculative instr_ret_i
+  input var logic                 instr_ret_compressed_spec_i, // speculative instr_ret_compressed_i
+  input var logic                 iside_wait_i,                // core waiting for the iside
+  input var logic                 jump_i,                      // jump instr seen (j, jr, jal, jalr)
+  input var logic                 branch_i,                    // branch instr seen (bf, bnf)
+  input var logic                 branch_taken_i,              // branch was taken
+  input var logic                 mem_load_i,                  // load from memory in this cycle
+  input var logic                 mem_store_i,                 // store to memory in this cycle
+  input var logic                 dside_wait_i,                // core waiting for the dside
+  input var logic                 mul_wait_i,                  // core waiting for multiply
+  input var logic                 div_wait_i                   // core waiting for divide
 );
 
   import ibex_pkg::*;

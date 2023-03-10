@@ -14,13 +14,13 @@
 `include "prim_assert.sv"
 
 module ibex_compressed_decoder (
-  input  logic        clk_i,
-  input  logic        rst_ni,
-  input  logic        valid_i,
-  input  logic [31:0] instr_i,
-  output logic [31:0] instr_o,
-  output logic        is_compressed_o,
-  output logic        illegal_instr_o
+  input var logic        clk_i,
+  input var logic        rst_ni,
+  input var logic        valid_i,
+  input var logic [31:0] instr_i,
+  output var logic [31:0] instr_o,
+  output var logic        is_compressed_o,
+  output var logic        illegal_instr_o
 );
   import ibex_pkg::*;
 

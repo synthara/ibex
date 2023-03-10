@@ -13,14 +13,14 @@ module ibex_csr #(
   parameter bit             ShadowCopy = 1'b0,
   parameter bit [Width-1:0] ResetValue = '0
  ) (
-  input  logic             clk_i,
-  input  logic             rst_ni,
+  input var logic             clk_i,
+  input var logic             rst_ni,
 
-  input  logic [Width-1:0] wr_data_i,
-  input  logic             wr_en_i,
-  output logic [Width-1:0] rd_data_o,
+  input var logic [Width-1:0] wr_data_i,
+  input var logic             wr_en_i,
+  output var logic [Width-1:0] rd_data_o,
 
-  output logic             rd_error_o
+  output var logic             rd_error_o
 );
 
   logic [Width-1:0] rdata_q;

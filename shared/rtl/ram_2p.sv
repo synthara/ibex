@@ -12,22 +12,22 @@ module ram_2p #(
     parameter int Depth       = 128,
     parameter     MemInitFile = ""
 ) (
-    input               clk_i,
-    input               rst_ni,
+    input var              clk_i,
+    input var              rst_ni,
 
-    input               a_req_i,
-    input               a_we_i,
-    input        [ 3:0] a_be_i,
-    input        [31:0] a_addr_i,
-    input        [31:0] a_wdata_i,
+    input var              a_req_i,
+    input var              a_we_i,
+    input var       [ 3:0] a_be_i,
+    input var       [31:0] a_addr_i,
+    input var       [31:0] a_wdata_i,
     output logic        a_rvalid_o,
     output logic [31:0] a_rdata_o,
 
-    input               b_req_i,
-    input               b_we_i,
-    input        [ 3:0] b_be_i,
-    input        [31:0] b_addr_i,
-    input        [31:0] b_wdata_i,
+    input var              b_req_i,
+    input var              b_we_i,
+    input var       [ 3:0] b_be_i,
+    input var       [31:0] b_addr_i,
+    input var       [31:0] b_wdata_i,
     output logic        b_rvalid_o,
     output logic [31:0] b_rdata_o
 );

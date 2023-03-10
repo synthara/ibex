@@ -35,37 +35,37 @@
  * information from the objdump-generated disassembly, and the runtime information from this tracer.
  */
 module ibex_tracer (
-  input logic        clk_i,
-  input logic        rst_ni,
+  input var logic        clk_i,
+  input var logic        rst_ni,
 
-  input logic [31:0] hart_id_i,
+  input var logic [31:0] hart_id_i,
 
   // RVFI as described at https://github.com/SymbioticEDA/riscv-formal/blob/master/docs/rvfi.md
   // The standard interface does not have _i/_o suffixes. For consistency with the standard the
   // signals in this module don't have the suffixes either.
-  input logic        rvfi_valid,
-  input logic [63:0] rvfi_order,
-  input logic [31:0] rvfi_insn,
-  input logic        rvfi_trap,
-  input logic        rvfi_halt,
-  input logic        rvfi_intr,
-  input logic [ 1:0] rvfi_mode,
-  input logic [ 1:0] rvfi_ixl,
-  input logic [ 4:0] rvfi_rs1_addr,
-  input logic [ 4:0] rvfi_rs2_addr,
-  input logic [ 4:0] rvfi_rs3_addr,
-  input logic [31:0] rvfi_rs1_rdata,
-  input logic [31:0] rvfi_rs2_rdata,
-  input logic [31:0] rvfi_rs3_rdata,
-  input logic [ 4:0] rvfi_rd_addr,
-  input logic [31:0] rvfi_rd_wdata,
-  input logic [31:0] rvfi_pc_rdata,
-  input logic [31:0] rvfi_pc_wdata,
-  input logic [31:0] rvfi_mem_addr,
-  input logic [ 3:0] rvfi_mem_rmask,
-  input logic [ 3:0] rvfi_mem_wmask,
-  input logic [31:0] rvfi_mem_rdata,
-  input logic [31:0] rvfi_mem_wdata
+  input var logic        rvfi_valid,
+  input var logic [63:0] rvfi_order,
+  input var logic [31:0] rvfi_insn,
+  input var logic        rvfi_trap,
+  input var logic        rvfi_halt,
+  input var logic        rvfi_intr,
+  input var logic [ 1:0] rvfi_mode,
+  input var logic [ 1:0] rvfi_ixl,
+  input var logic [ 4:0] rvfi_rs1_addr,
+  input var logic [ 4:0] rvfi_rs2_addr,
+  input var logic [ 4:0] rvfi_rs3_addr,
+  input var logic [31:0] rvfi_rs1_rdata,
+  input var logic [31:0] rvfi_rs2_rdata,
+  input var logic [31:0] rvfi_rs3_rdata,
+  input var logic [ 4:0] rvfi_rd_addr,
+  input var logic [31:0] rvfi_rd_wdata,
+  input var logic [31:0] rvfi_pc_rdata,
+  input var logic [31:0] rvfi_pc_wdata,
+  input var logic [31:0] rvfi_mem_addr,
+  input var logic [ 3:0] rvfi_mem_rmask,
+  input var logic [ 3:0] rvfi_mem_wmask,
+  input var logic [31:0] rvfi_mem_rdata,
+  input var logic [31:0] rvfi_mem_wdata
 );
 
   // These signals are part of RVFI, but not used in this module currently.
@@ -160,7 +160,7 @@ module ibex_tracer (
 
 
   // Format register address with "x" prefix, left-aligned to a fixed width of 3 characters.
-  function automatic string reg_addr_to_str(input logic [4:0] addr);
+  function automatic string reg_addr_to_str(input var logic [4:0] addr);
     if (addr < 10) begin
       return $sformatf(" x%0d", addr);
     end else begin
@@ -169,7 +169,7 @@ module ibex_tracer (
   endfunction
 
   // Get a CSR name for a CSR address.
-  function automatic string get_csr_name(input logic [11:0] csr_addr);
+  function automatic string get_csr_name(input var logic [11:0] csr_addr);
     unique case (csr_addr)
       12'd0: return "ustatus";
       12'd4: return "uie";

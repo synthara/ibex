@@ -16,19 +16,20 @@
  */
 
 `include "prim_assert.sv"
+`default_nettype none
 
 module ibex_branch_predict (
-  input  logic clk_i,
-  input  logic rst_ni,
+  input  var logic clk_i,
+  input  var logic rst_ni,
 
   // Instruction from fetch stage
-  input  logic [31:0] fetch_rdata_i,
-  input  logic [31:0] fetch_pc_i,
-  input  logic        fetch_valid_i,
+  input  var logic [31:0] fetch_rdata_i,
+  input  var logic [31:0] fetch_pc_i,
+  input  var logic        fetch_valid_i,
 
   // Prediction for supplied instruction
-  output logic        predict_branch_taken_o,
-  output logic [31:0] predict_branch_pc_o
+  output var logic        predict_branch_taken_o,
+  output var logic [31:0] predict_branch_pc_o
 );
   import ibex_pkg::*;
 

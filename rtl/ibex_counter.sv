@@ -5,15 +5,15 @@ module ibex_counter #(
   // correctly. When `ProvideValUpd` is set no DSPs are inferred.
   parameter bit ProvideValUpd = 0
 ) (
-  input  logic        clk_i,
-  input  logic        rst_ni,
+  input var logic        clk_i,
+  input var logic        rst_ni,
 
-  input  logic        counter_inc_i,
-  input  logic        counterh_we_i,
-  input  logic        counter_we_i,
-  input  logic [31:0] counter_val_i,
-  output logic [63:0] counter_val_o,
-  output logic [63:0] counter_val_upd_o
+  input var logic        counter_inc_i,
+  input var logic        counterh_we_i,
+  input var logic        counter_we_i,
+  input var logic [31:0] counter_val_i,
+  output var logic [63:0] counter_val_o,
+  output var logic [63:0] counter_val_upd_o
 );
 
   logic [63:0]             counter;
