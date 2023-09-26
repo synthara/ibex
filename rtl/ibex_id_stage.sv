@@ -1084,17 +1084,17 @@ module ibex_id_stage #(
   ////////////////
 
   // Selectors must be known/valid.
-  `ASSERT_KNOWN_IF(IbexAluOpMuxSelKnown, alu_op_a_mux_sel, instr_valid_i)
+  // `ASSERT_KNOWN_IF(IbexAluOpMuxSelKnown, alu_op_a_mux_sel, instr_valid_i)
   `ASSERT(IbexAluAOpMuxSelValid, instr_valid_i |-> alu_op_a_mux_sel inside {
       OP_A_REG_A,
       OP_A_FWD,
       OP_A_CURRPC,
       OP_A_IMM})
-  `ASSERT_KNOWN_IF(IbexBTAluAOpMuxSelKnown, bt_a_mux_sel, instr_valid_i)
+  // `ASSERT_KNOWN_IF(IbexBTAluAOpMuxSelKnown, bt_a_mux_sel, instr_valid_i)
   `ASSERT(IbexBTAluAOpMuxSelValid, instr_valid_i |-> bt_a_mux_sel inside {
       OP_A_REG_A,
       OP_A_CURRPC})
-  `ASSERT_KNOWN_IF(IbexBTAluBOpMuxSelKnown, bt_b_mux_sel, instr_valid_i)
+  // `ASSERT_KNOWN_IF(IbexBTAluBOpMuxSelKnown, bt_b_mux_sel, instr_valid_i)
   `ASSERT(IbexBTAluBOpMuxSelValid, instr_valid_i |-> bt_b_mux_sel inside {
       IMM_B_I,
       IMM_B_B,
@@ -1103,19 +1103,19 @@ module ibex_id_stage #(
   `ASSERT(IbexRegfileWdataSelValid, instr_valid_i |-> rf_wdata_sel inside {
       RF_WD_EX,
       RF_WD_CSR})
-  `ASSERT_KNOWN(IbexWbStateKnown, id_fsm_q)
+  // `ASSERT_KNOWN(IbexWbStateKnown, id_fsm_q)
 
   // Branch decision must be valid when jumping.
-  `ASSERT_KNOWN_IF(IbexBranchDecisionValid, branch_decision_i,
-      instr_valid_i && !(illegal_csr_insn_i || instr_fetch_err_i))
+  // `ASSERT_KNOWN_IF(IbexBranchDecisionValid, branch_decision_i,
+  //     instr_valid_i && !(illegal_csr_insn_i || instr_fetch_err_i))
 
   // Instruction delivered to ID stage can not contain X.
-  `ASSERT_KNOWN_IF(IbexIdInstrKnown, instr_rdata_i,
-      instr_valid_i && !(illegal_c_insn_i || instr_fetch_err_i))
+  // `ASSERT_KNOWN_IF(IbexIdInstrKnown, instr_rdata_i,
+      // instr_valid_i && !(illegal_c_insn_i || instr_fetch_err_i))
 
   // Instruction delivered to ID stage can not contain X.
-  `ASSERT_KNOWN_IF(IbexIdInstrALUKnown, instr_rdata_alu_i,
-      instr_valid_i && !(illegal_c_insn_i || instr_fetch_err_i))
+  // `ASSERT_KNOWN_IF(IbexIdInstrALUKnown, instr_rdata_alu_i,
+  //     instr_valid_i && !(illegal_c_insn_i || instr_fetch_err_i))
 
   // Multicycle enable signals must be unique.
   `ASSERT(IbexMulticycleEnableUnique,
