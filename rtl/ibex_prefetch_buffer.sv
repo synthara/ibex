@@ -45,8 +45,8 @@ module ibex_prefetch_buffer #(
   output var logic        busy_o
 );
 
-  // localparam int unsigned NUM_REQS  = 4;
-  localparam int unsigned NUM_REQS  = 2;
+  localparam int unsigned NUM_REQS  = 4;
+  // localparam int unsigned NUM_REQS  = 2;
 
   logic                branch_suppress;
   logic                valid_new_req, valid_req;
